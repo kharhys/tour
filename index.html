@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- this page contains the site's layout and the mechanism for switching from page to page and imports custom elements -->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>swaney agency</title>
+        <!--external stylesheet -->
+        <link href="src/styles/app.css" rel="stylesheet">
+        <!--and fonts: coutersy of google -->
+        <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+
+        <!-- building blocks used in this web page. all credits go to their respective authors  -->
+        <script src="bower_components/platform/platform.js"></script>
+        <link rel="import" href="bower_components/juicy-html/juicy-html.html">
+        <link rel="import" href="bower_components/paper-item/paper-item.html">
+        <link rel="import" href="bower_components/paper-input/paper-input.html">
+        <link rel="import" href="bower_components/paper-button/paper-button.html">
+        <link rel="import" href="bower_components/core-scaffold/core-scaffold.html">
+        <link rel="import" href="bower_components/flatiron-director/flatiron-director.html">
+        <link rel="import" href="bower_components/core-icon-button/core-icon-button.html">
+        <link rel="import" href="bower_components/core-animated-pages/core-animated-pages.html">
+        <link rel="import" href="bower_components/core-animated-pages/transitions/slide-from-right.html">
+
+    </head>
+
+    <body unresolved fullbled>
+        <template is="auto-binding" id="t">
+            <!--this is for switching between pages in the app -->
+            <flatiron-director route="{{route}}" autoHash></flatiron-director>
+
+            <!--creates the page layout: a menu, header bar and content area -->
+            <core-scaffold >
+                <!--the menu: hiden in small screens. resize the browser window if you wanna -->
+                <nav>
+                    <core-toolbar><span>Swaney Agency</span></core-toolbar>
+                    <!--the menu items: derived from the list of pages defined in the script at the bottom of the page -->
+                    <core-menu valueattr="hash" selected="{{route}}">
+                        <template repeat="{{page in pages}}"> <!-- for each page in the accompanying list of pages -->
+                        <!-- show a menu item linking to the corresponding page -->
+                          <paper-item icon="label-outline" label="{{page.name}}" hash="{{page.hash}}">
+                            <a href="#{{page.hash}}"></a>
+                          </paper-item>
+                        </template>
+                  </core-menu>
+                </nav>
+
+                <!--page header. it is shared by all pages in this site -->
+                <core-toolbar tool flex>
+                    <div flex>
+                        {{route}}
+                    </div>
+                    <core-icon-button icon="refresh"></core-icon-button>
+                </core-toolbar>
+
+                <!-- define content area -->
+                <div layout horizontal center-center fit>
+                    <core-animated-pages valueattr="hash" selected="{{route}}"  transitions="slide-from-right">
+                        <template repeat="{{page in pages}}">
+                            <section id="page" hash="{{page.hash}}" layout vertical>
+                                <!-- dynamically load the contents of the selected page into the content area -->
+                                <template is="juicy-html"content="{{ page.content }}"></template>
+                            </section>
+                        </template>
+                    </core-animated-pages>
+                </div>
+            </core-scaffold>
+
+        </template>
+        <script>
+            var template = document.querySelector('#t');
+            //a simple model of representing the five web pages  app   content is a url pointing to the html page
+            template.pages = [
+                {name: 'home',  hash: 'home', content: "./src/pages/index.html" },
+                {name: 'destinations',  hash: 'destinations',  content: "./src/pages/destinations.html" },
+                {name: 'transport',  hash: 'transport', content: "./src/pages/transport.html" },
+                {name: 'book',  hash: 'book', content: "./src/pages/book.html" },
+                {name: 'about',  hash: 'about', content: "./src/pages/about.html" }
+            ];
+            template.addEventListener('template-bound', function (e) {
+                this.route = this.route || 'home';
+            });
+        </script>
+    </body>
+</html>

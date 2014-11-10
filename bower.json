@@ -1,0 +1,27 @@
+{
+  "name": "https://github.com/kharhys/tour",
+  "version": "0.0.0",
+  "description": "My awesome Custom Element",
+  "license": "MIT",
+  "main": "src/tour-app.html",
+  "keywords": [
+    "polymer",
+    "web-components"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.3.3",
+    "core-animated-pages": "Polymer/core-animated-pages#~0.4.2",
+    "core-elements": "Polymer/core-elements#~0.4.2",
+    "paper-elements": "Polymer/paper-elements#~0.4.2",
+    "flatiron-director": "PolymerLabs/flatiron-director#~0.4.0",
+    "juicy-html": "Juicy/juicy-html#~0.0.20140720",
+    "voice-elements": "~0.1.3",
+    "polymer-simple-slider": "~0.1.5",
+    "flip-card": "~0.0.2"
+  }
+}

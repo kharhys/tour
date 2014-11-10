@@ -1,0 +1,37 @@
+<!--
+    This web app has been build using web components, a relatively new techniques of coding in html, css and javascript.
+    The specifications for web components are freely available on <a href="http://www.w3.org/wiki/WebComponents/">w3c's wiki.</a>
+    Several software libraries have been made use of in this project. Among these is <a href="http://polymer-project.org/">polymer js</a> ,
+    a javascript library created by the geniuses at google that makes working with web    components a breeze.  This and all other libraries
+    used in this project are available free for use on <a href="http://github.com/">github</a>. 
+-->
+
+<!-- Import Polymer -->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<!-- Define your custom element -->
+<polymer-element name="tour-app">
+
+    <script>
+        Polymer('tour-app', {
+            // Fires when an instance of the element is created
+            created: function() {},
+
+            // Fires when the "<polymer-element>" has been fully prepared
+            ready: function() {},
+
+            // Fires when the element’s initial set of children and siblings are guaranteed to exist
+            domReady: function() {},
+
+            // Fires when the element was inserted into the document
+            attached: function() {},
+
+            // Fires when the element was removed from the document
+            detached: function() {},
+
+            // Fires when an attribute was added, removed, or updated
+            attributeChanged: function(attr, oldVal, newVal) {}
+        });
+    </script>
+
+</polymer-element>
